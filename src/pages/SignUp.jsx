@@ -29,7 +29,7 @@ export default function SignUp() {
       console.log(data);
       if (data.success === false) {
         setLoading(false);
-        setError(error.message);
+        setError(data.message);
 
         return;
       }
