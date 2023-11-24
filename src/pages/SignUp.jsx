@@ -55,6 +55,7 @@ export default function SignUp() {
           type="text"
           placeholder="username"
           onChange={handleChange}
+          required
         />
         <input
           className="border p-3 rounded-lg"
@@ -62,6 +63,7 @@ export default function SignUp() {
           type="email"
           placeholder="email"
           onChange={handleChange}
+          required
         />
         <input
           className="border p-3 rounded-lg"
@@ -69,6 +71,7 @@ export default function SignUp() {
           type="password"
           placeholder="password"
           onChange={handleChange}
+          required
         />
         <button
           disabled={loading}
