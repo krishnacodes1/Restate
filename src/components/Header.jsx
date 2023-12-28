@@ -1,16 +1,17 @@
-import React from "react";
-import {  FaSearch } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function Header() {
+  const { currentUser } = useSelector(state => state.user);
   return (
     <header className="bg-slate-200 shadow-md">
       <div className="flex justify-between items-center max-w-6xl mx-auto p-3">
         <Link to="/">
-        <h1 className=" font-bold text-sm sm:text-xl flex flex-wrap ">
-          <span className="text-slate-500  hover:font-bold">krish</span>
-          <span className="text-black  hover:font-bold">Estate</span>
-        </h1>
+          <h1 className=" font-bold text-sm sm:text-xl flex flex-wrap ">
+            <span className="text-slate-500  hover:font-bold">krish</span>
+            <span className="text-black  hover:font-bold">Estate</span>
+          </h1>
         </Link>
         <form className="bg-slate-300 p-3 rounded-lg flex items-center">
           <input
@@ -21,9 +22,30 @@ function Header() {
           <FaSearch className="text-slate-600 cursor-pointer" />
         </form>
         <ul className="flex gap-4">
-           <Link to='home'> <li className=" hidden sm:inline text-slate-700 capitalize  hover:font-bold cursor-pointer ">Home</li></Link>
-           <Link to='about'> <li className=" hidden sm:inline text-slate-700 capitalize  hover:font-bold cursor-pointer ">About</li></Link>
-           <Link to='sign-up'> <li className=" hidden sm:inline text-slate-700 capitalize  hover:font-bold cursor-pointer ">Sign Up</li></Link>
+          <Link to="home">
+            <li className=" hidden sm:inline text-slate-700 capitalize  hover:font-bold cursor-pointer ">
+              Home
+            </li>
+          </Link>
+          <Link to="about">
+            <li className=" hidden sm:inline text-slate-700 capitalize  hover:font-bold cursor-pointer ">
+              About
+            </li>
+          </Link>
+
+          <Link to="profile">
+            {currentUser ? (
+              <img
+                className=" rounded-full h-10 object-cover"
+                src={currentUser.avatar}
+                alt="profile"
+              />
+            ) : (
+              <li className=" hidden sm:inline text-slate-700 capitalize  hover:font-bold cursor-pointer ">
+                Sign Up
+              </li>
+            )}
+          </Link>
         </ul>
       </div>
     </header>
